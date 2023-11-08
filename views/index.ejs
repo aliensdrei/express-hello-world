@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
+    <title>Poll Results</title>
+</head>
+<body>
+    <h1>Poll Results for:</h1>
+    <h2><%= Question %></h2>
+    <table>
+        <thead><tr><th>Answer</th><th>Votes</th></tr></thead>
+    
+    <% Answers.forEach(function(answer,i){ %>
+            <tr><td><%= answer %></td><td id='<%= "votes" + i  %>'></td></tr>
+        <% }); %>
+    </table>
+    <button id="btnRefresh">Refresh !</button>
+    <script>
+        async function getResults (e) {
+            const response = await fetch("./results");
+            const results = await response.json();
+            results.forEach((element,i) => {
+                document.getElementById("votes" + i).innerText = element
+            });
+        }
+        document.addEventListener("DOMContentLoaded", (event) => {
+            document.getElementById("btnRefresh").addEventListener("click",  getResults)
+        })
+    </script>
+</body>
+</html>

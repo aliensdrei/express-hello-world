@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
+    <title>Poll Question</title>
+</head>
+<body>
+    <h1>Please answer the question:</h1>
+    <h2><%= Question %></h2>
+    <form method ="post" action ="./participant">
+        <fieldset>
+            <% Answers.forEach(function(answer,i){ %>
+                <div><input type="radio" id="<%= "raspuns" + i %>" name="raspuns" value="<%= i %>" />
+                    <label for="<%= "raspuns" + i %>"><%= answer %></label></div>
+            <% }); %>
+            <br>
+            <input id="submit" type="submit" value="Submit Answer!" />
+        </fieldset>
+</form>
+</body>
+</html>

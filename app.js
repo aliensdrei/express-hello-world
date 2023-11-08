@@ -1,43 +1,76 @@
-const express = require('express')
-const path = require("path");
-const app = express()
+const CyclicDb = require("@cyclic.sh/dynamodb");
+const db = CyclicDb("busy-erin-bull-kitCyclicDB");
 
-// #############################################################################
-// Logs all request paths and method
-app.use(function (req, res, next) {
-  res.set('x-timestamp', Date.now())
-  res.set('x-powered-by', 'cyclic.sh')
-  console.log(`[${new Date().toISOString()}] ${req.ip} ${req.method} ${req.path}`);
-  next();
+const express = require("express");
+const app = express();
+
+app.set("views", "views");
+app.set("view engine", "ejs");
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static("public"));
+
+app.post("/question", async (req, res, next) => {
+  let questions = db.collection("questions");
+
+  let q = await questions.set(
+    "q" + Math.random().toString(16).slice(2),
+    {
+      meeting: "123456789",
+      text: req.body.q_text,
+      answers: req.body.answer,
+    },
+    {
+      $index: ["meeting"],
+    }
+  );
+  console.log(q);
+  res.render("index", { Question: req.body.q_text, Answers: req.body.answer });
 });
 
-// #############################################################################
-// This configures static hosting for files in /public that have the extensions
-// listed in the array.
-var options = {
-  dotfiles: 'ignore',
-  etag: false,
-  extensions: ['htm', 'html','css','js','ico','jpg','jpeg','png','svg'],
-  index: ['index.html'],
-  maxAge: '1m',
-  redirect: false
-}
-app.use(express.static('public', options))
+app.get("/participant", async (req, res, next) => {
+  let questions = db.collection("questions");
+  let q = await questions.index("meeting").find("123456789");
+  res.render("participant", {
+    Question: q.results[0].props.text,
+    Answers: q.results[0].props.answers,
+  });
+});
 
-// #############################################################################
-// Catch all handler for all other request.
-app.use('*', (req,res) => {
-  res.json({
-      at: new Date().toISOString(),
-      method: req.method,
-      hostname: req.hostname,
-      ip: req.ip,
-      query: req.query,
-      headers: req.headers,
-      cookies: req.cookies,
-      params: req.params
-    })
-    .end()
-})
+app.post("/participant", async (req, res, next) => {
+  console.log(req.body.raspuns);
+  let answers = db.collection("answers");
 
-module.exports = app
+  let q = await answers.set(
+    "a" + Math.random().toString(16).slice(2),
+    {
+      meeting: "123456789",
+      user: "user123",
+      answers: req.body.raspuns,
+    },
+    {
+      $index: ["meeting"],
+    }
+  );
+  res.render("thank", {});
+});
+
+app.get("/results", async (req, res, next) => {
+  let answers = db.collection("answers");
+  let q = await answers.index("meeting").find("123456789");
+  const results = []
+  q.results.forEach(element => {
+    if (Object.keys(results).indexOf(element.props.answers) == -1){
+      results[element.props.answers] = 1
+    } else {
+      results[element.props.answers] = results[element.props.answers] + 1
+    }
+  })
+  res.json(results)
+});
+
+const port = process.env.PORT || 3000;
+
+app.listen(port, () => {
+  console.log(`Voting app listening at http://localhost:${port}`);
+});
