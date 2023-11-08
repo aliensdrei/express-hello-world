@@ -18,7 +18,7 @@
             <tr><td><%= answer %></td><td id='<%= "votes" + i  %>'></td></tr>
         <% }); %>
     </table>
-
+    <button id="btnStop">End poll</button>
     <script>
         async function getResults (e) {
             const response = await fetch("./results");
@@ -31,10 +31,13 @@
             getResults();
             setInterval(getResults, 1500);
         })
-
+        function stopShare(){
+            app.clearShareUrl()
+        }
         const app = new window.webex.Application();
         app.onReady().then(() => {
             app.setShareUrl("https://voting.cyclic.app/participant", "", "Voting App")
+            document.getElementById("btnStop").addEventListener("click", stopShare)
         })
     </script>
 </body>
