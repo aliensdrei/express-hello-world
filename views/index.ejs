@@ -16,7 +16,7 @@
             <tr><td><%= answer %></td><td id='<%= "votes" + i  %>'></td></tr>
         <% }); %>
     </table>
-    <button id="btnRefresh">Refresh !</button>
+
     <script>
         async function getResults (e) {
             const response = await fetch("./results");
@@ -26,7 +26,8 @@
             });
         }
         document.addEventListener("DOMContentLoaded", (event) => {
-            document.getElementById("btnRefresh").addEventListener("click",  getResults)
+            getResults();
+            setInterval(getResults, 1500);
         })
     </script>
 </body>

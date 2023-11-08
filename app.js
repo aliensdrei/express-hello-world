@@ -24,7 +24,6 @@ app.post("/question", async (req, res, next) => {
       $index: ["meeting"],
     }
   );
-  console.log(q);
   res.render("index", { Question: req.body.q_text, Answers: req.body.answer });
 });
 
@@ -38,9 +37,7 @@ app.get("/participant", async (req, res, next) => {
 });
 
 app.post("/participant", async (req, res, next) => {
-  console.log(req.body.raspuns);
   let answers = db.collection("answers");
-
   let q = await answers.set(
     "a" + Math.random().toString(16).slice(2),
     {
