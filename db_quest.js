@@ -15,7 +15,7 @@ const run = async function(){
 
     console.log(q)
 */
-    await questions.delete("qc3451120e1d44")
+    await questions.delete("qfee2276a7b2e9")
 
     let mtgidx = await questions.index("meeting").find("123456789")
     console.log(mtgidx.results)

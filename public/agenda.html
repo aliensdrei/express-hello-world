@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <title>Agenda</title>
+    <Style>
+        td:first-child {
+            font-size: 12px;
+        }
+
+        td:nth-child(3) {
+            font-size: 12px;
+        }
+
+        td:nth-child(2) {
+            font-size: 14px;
+        }
+        p {
+            font-size: 10 px;
+            font-style: italic;
+            font-weight: 200;
+        }
+        span {
+            font-weight: 500;
+        }
+
+    </Style>
+</head>
+
+<body>
+    <container>
+        <table class="table table-stripped fw-light p-1 align-middle">
+            <thead class="table-dark">
+                <td>Ora</td>
+                <td>Marti 14 Nov</td>
+                <td>Unde</td>
+            </thead>
+            <tbody class="table-group-divider">
+                <tr>
+                    <td class="ora">15:00</td>
+                    <td><em>Bun venit & Inregistrare eveniment!</em></td>
+                    <td>Receptie</td>
+                </tr>
+                <tr>
+                    <td colspan="3"><em>Va intampinam cu cafea proaspat prajita, pregatita cu atentie si drag de catre
+                            profesionisti!</em></td>
+                </tr>
+                <tr>
+                    <td>17:00</td>
+                    <td><span>Sesiune de deschidere</span> - Paul Maravei, Catalina Niculita, Ciprian Tone</td>
+                    <td rowspan="3">Magnum</td>
+                </tr>
+                <tr>
+                    <td>18:00</td>
+                    <td><span>Dark Cockpit</span> - Emil Dobrovolschi, invitat special
+                        <details>
+                            <summary><strong>Mai multe detalii...</strong></summary>
+                            <p>Emil Dobrovolschi este pilot la Tarom din 1994 si a urcat toate treptele ierarhiei
+                            profesionale: copilot, comandant, instructor-examinator, pilot de receptie si control si
+                            comandant al unor misiuni speciale.
+                            Are o vasta experienta manageriala, ocupand de-a lungul anilor diverse functii de conducere
+                            in compania Tarom, cea mai importanta fiind cea de Director Operatiuni Zbor.
+                            Emil vorbeste cu pasiune despre profesionalism si motivatie, despre leadership pe pamant si
+                            in aer.</p>
+                        </details>
+                    </td>
+                </tr>
+                <tr>
+                    <td>19:30</td>
+                    <td>Premierea celor mai buni in anul fiscal FY23</td>
+                </tr>
+                <tr>
+                    <td>20:00</td>
+                    <td>Cina</td>
+                    <td>Restaurant Panoramic</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table class="table table-stripped fw-light p-1 align-middle">
+            <thead class="table-dark">
+                <td>Ora</td>
+                <td>Miercuri 15 Nov</td>
+                <td>Unde</td>
+            </thead>
+            <tbody class="table-group-divider">
+                <tr>
+                    <td class="ora">07:00</td>
+                    <td><em>Mic dejun</em></td>
+                    <td>Restaurant Panoramic</td>
+                </tr>
+                <tr>
+                    <td colspan="3"><em>Ziua este mai frumoasa si productiva cu o cafea buna! Gasiti Cafeaua Cisco in
+                            permanenta in holul hotelului!</em></td>
+                </tr>
+                <tr class="table-success">
+                    <td>10:00</td>
+                    <td>Sesiune pentru account manageri: <span>Tehnologii Cisco zero-touch, Umbrella</span>
+                        <details>
+                            <summary><strong>Mai multe detalii...</strong></summary>
+                            <p>Vom discuta despre doua tehnologii Cisco extrem de populare, usor de implementat, Umbrella
+                            si Meraki, ce acopera atat partea de infrastructura, cat si securitatea pentru toate
+                            tipurile de retele.
+                            Argumentul central in favoarea solutiilor Umbrella si Meraki este scalabilitatea lor facila
+                            pornind de la retele fara un personal IT dedicat sau redus, precum si la retele foarte mari.</p>
+                        </details>
+                    </td>
+                    <td>Auditorium</td>
+                </tr>
+                <tr class="table-success">
+                    <td>10:00</td>
+                    <td>Sesiune pentru account manageri: <span>Security pentru clienti Enterprise</span>
+                        <details>
+                            <summary><strong>Mai multe detalii...</strong></summary>
+                            <p>Pornind de la zonele strategice de investitii IT pentru un client de tip Enterprise si
+                            anume: Networking, Security, Hybrid Work, Application Experience, Edge, vom discuta despre fiecare
+                            componenta de securitate a solutiilor Cisco.</p>
+                        </details>
+                    </td>
+                    <td>Magnum</td>
+                </tr>
+                <tr class="table-primary">
+                    <td>10:00</td>
+                    <td>Sesiune pentru ingineri presales
+                        <details>
+                            <summary><strong>Mai multe detalii...</strong></summary>
+                            <p>Vom discuta despre SASE framework cu accent pe componenta SSE (Secure Service Edge) impreuna
+                            cu Thierry Van Steirteghem, Cisco Technical Solutions Architect. In partea a doua vom aborda
+                            partea de SASE on-prem routing.</p>
+                        </details>
+                    </td>
+                    <td>Forum</td>
+                </tr>
+                <tr class="table-warning">
+                    <td>10:30</td>
+                    <td>Masa Rotunda <span>CXO</span></td>
+                    <td>Magnum</td>
+                </tr>
+                <tr>
+                    <td>13:00</td>
+                    <td>Pranz</td>
+                    <td>Restaurant Panoramic</td>
+                </tr>
+                <tr class="table-success">
+                    <td>14:00</td>
+                    <td>Sesiune pentru account manageri: <span>Tehnologii Cisco zero-touch, Umbrella</span></td>
+                <td>Auditorium</td>
+                </tr>
+                <tr class="table-success">
+                    <td>14:00</td>
+                    <td>Sesiune pentru account manageri: <span>Cisco Security pentru clienti Enterprise</span></td>
+                    <td>Magnum</td>
+                </tr>
+                <tr class="table-primary">
+                    <td>14:00</td>
+                    <td>Sesiune pentru ingineri presales</td>
+
+                    </td>
+                    <td>Forum</td>
+                </tr>
+                <tr>
+                    <td>17:00</td>
+                    <td>Timp Liber</td>
+                    <td>SPA, Piscina</td>
+                </tr>
+                <tr>
+                    <td>20:00</td>
+                    <td>Cina</td>
+                    <td>Restaurant Panoramic</td>
+                </tr>
+                <tr class="table-danger">
+                    <td>22:00</td>
+                    <td><span>Petrecere cu palarii nastrusnice</span></td>
+                    <td>Club Hotel International</td>
+                </tr>                
+            </tbody>
+        </table>
+
+        <table class="table table-stripped fw-light p-1 align-middle">
+            <thead class="table-dark">
+                <td>Ora</td>
+                <td>Joi 16 Nov</td>
+                <td>Unde</td>
+            </thead>
+            <tbody class="table-group-divider">
+                <tr>
+                    <td class="ora">08:00</td>
+                    <td><em>Mic dejun</em></td>
+                    <td>Restaurant Panoramic</td>
+                </tr>
+                <tr>
+                    <td class="ora">11:00</td>
+                    <td><em>Check-out si plecare</em></td>
+                    <td>&nbsp;</td>
+                </tr>
+            </tbody>
+        </table>
+    </container>
+</body>
+
+</html>
