@@ -9,6 +9,7 @@ app.set("view engine", "ejs");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
+/*
 
 app.post("/question", async (req, res, next) => {
   let questions = db.collection("questions");
@@ -65,7 +66,7 @@ app.get("/results", async (req, res, next) => {
   })
   res.json(results)
 });
-
+*/
 const port = process.env.PORT || 3000;
 
 app.listen(port, () => {

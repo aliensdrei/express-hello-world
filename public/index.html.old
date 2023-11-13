@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <h2>Create poll question</h2>
+    <form id="frm" method="post" action="./question">
+        <textarea
+          id="q_text"
+          name="q_text"
+          placeholder="Type your question here ..."
+        ></textarea>
+        <button id="add_opt">&#10133; Add Option</button>
+        <input id="ans1" name="answer" type="text" placeholder="Answer Option 1" />
+        <input id="submit" type="submit" value="Start Poll !" />
+    </form>
+
+    <script>
+      let ansId = 1;
+      const addOption = (e) => {
+        const newAns = document.createElement("input");
+        newAns.id = "ans" + (ansId + 1);
+        newAns.type = "text";
+        newAns.name = "answer";
+        newAns.placeholder = "Answer Option" + (ansId + 1);
+        document
+          .getElementById("frm")
+          .insertBefore(newAns, document.getElementById("submit"));
+        ansId++;
+        e.preventDefault();
+      };
+      document.addEventListener("DOMContentLoaded", (event) => {
+        document.getElementById("add_opt").addEventListener("click", addOption);
+      });
+
+    </script>
+  </body>
+</html>
